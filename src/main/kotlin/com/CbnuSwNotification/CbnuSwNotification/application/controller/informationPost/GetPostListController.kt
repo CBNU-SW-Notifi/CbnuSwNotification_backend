@@ -8,10 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 
 @Tag(name = "Information Post API", description = "Information Post  API 목록")
@@ -23,7 +20,7 @@ class GetPostListController {
     private val log = LoggerFactory.getLogger(GetPostListController::class.java)
 
     @Operation(summary = "정보 게시글 리스트 조회", description = "정보 게시글의 리스트 조회를 조회합니다")
-    @PostMapping("/list")
+    @GetMapping("/list")
     fun getPostList(
         @RequestParam(defaultValue = "0")@Parameter(description = "마지막으로 받아온 post의 id") cursor: Long,
         @RequestParam(defaultValue = "7")@Parameter(description = "받아올 개수") size: Long,

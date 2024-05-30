@@ -3,6 +3,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.controller.informa
 import com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost.dto.CursorResultResponse
 import com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost.dto.PostMetadataResponse
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -16,7 +17,7 @@ import java.time.LocalDateTime
 @Tag(name = "Information Post API", description = "Information Post  API 목록")
 @Controller
 @RestController
-@RequestMapping("/api/information-post")
+@RequestMapping("/api/v1/information-post")
 class GetPostListController {
 
     private val log = LoggerFactory.getLogger(GetPostListController::class.java)
@@ -24,8 +25,8 @@ class GetPostListController {
     @Operation(summary = "정보 게시글 리스트 조회", description = "정보 게시글의 리스트 조회를 조회합니다")
     @PostMapping("/list")
     fun getPostList(
-        @RequestParam(defaultValue = "0") cursor: Long,
-        @RequestParam(defaultValue = "7") size: Long,
+        @RequestParam(defaultValue = "0")@Parameter(description = "마지막으로 받아온 post의 id") cursor: Long,
+        @RequestParam(defaultValue = "7")@Parameter(description = "받아올 개수") size: Long,
     ): ResponseEntity<CursorResultResponse<PostMetadataResponse>> {
         log.info("게시글 리스트 조회 - cursor: ${cursor}, size: ${size}")
 

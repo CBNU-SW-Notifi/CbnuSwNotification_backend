@@ -8,12 +8,10 @@ import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 
 @Tag(name = "Information Post API", description = "Information Post  API 목록")
-@Controller
 @RestController
 @RequestMapping("/api/v1/information-post")
 class GetPostListController {

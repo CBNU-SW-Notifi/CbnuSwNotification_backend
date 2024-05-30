@@ -24,8 +24,8 @@ class GetPostListController {
     @Operation(summary = "정보 게시글 리스트 조회", description = "정보 게시글의 리스트 조회를 조회합니다")
     @PostMapping("/list")
     fun getPostList(
-        @RequestParam(required = true, defaultValue = "0") cursor: Long,
-        @RequestParam(required = true, defaultValue = "7") size: Long,
+        @RequestParam(defaultValue = "0") cursor: Long,
+        @RequestParam(defaultValue = "7") size: Long,
     ): ResponseEntity<CursorResultResponse<PostMetadataResponse>> {
         log.info("게시글 리스트 조회 - cursor: ${cursor}, size: ${size}")
 

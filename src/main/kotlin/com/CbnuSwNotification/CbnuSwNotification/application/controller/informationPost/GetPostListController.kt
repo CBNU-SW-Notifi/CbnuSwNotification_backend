@@ -2,6 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.controller.informa
 
 import com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost.dto.CursorResultResponse
 import com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost.dto.PostMetadataResponse
+import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -28,7 +29,7 @@ class GetPostListController {
         log.info("게시글 리스트 조회 - cursor: ${cursor}, size: ${size}")
 
         return ResponseEntity.ok().body(CursorResultResponse(
-            value = listOf(PostMetadataResponse(1,"tmp", LocalDateTime.now())),
+            value = listOf(PostMetadataResponse(1,"tmp",PostType.COMMON, LocalDateTime.now())),
             hasNext = false,
             lastIndex = 1,
         ))

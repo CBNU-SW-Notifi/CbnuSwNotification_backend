@@ -14,6 +14,12 @@ plugins {
 	kotlin("plugin.jpa") version "1.9.24"
 }
 
+allOpen{
+	annotation("javax.persistence.Entity")
+	annotation("javax.persistence.MappedSuperclass")
+	annotation("javax.persistence.Embeddable")
+}
+
 group = "com.CbnuSwNotification"
 version = "0.0.1-SNAPSHOT"
 

@@ -23,5 +23,6 @@ class Post(
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    val saveTime: LocalDateTime? = null
+    var saveTime: LocalDateTime? = null
+        private set
 }

@@ -12,7 +12,7 @@ class PostReadService(
 ) {
     fun readPost(postId: Long): PostReadResponse {
         val post = postRepository.findById(postId) ?: throw IllegalArgumentException("없는 게시글 입니다")
-
+        //TODO: 사진 및 첨부파일 추가
         return PostReadResponse(
             postId = post.id!!,
             title = post.title,

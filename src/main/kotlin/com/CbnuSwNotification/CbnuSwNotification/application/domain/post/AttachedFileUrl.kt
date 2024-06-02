@@ -10,6 +10,7 @@ class AttachedFileUrl {
     @Column(name = "attached_file_url_id")
     private val id: Long? = null
 
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     private val name: String
 
     private val url: String

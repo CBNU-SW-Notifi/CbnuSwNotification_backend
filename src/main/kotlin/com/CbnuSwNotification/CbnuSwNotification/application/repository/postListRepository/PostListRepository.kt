@@ -5,9 +5,9 @@ import com.CbnuSwNotification.CbnuSwNotification.application.repository.postList
 interface PostListRepository {
 
     /**
-     * @param cursor: 어디 이후로 부터 조회할지
-     * @param size: 몇개를 반환할지
-     * @return cursor 위치 이후 부터 size개
+     * @param page: 몇 번째 페이지 인지
+     * @param size: 한 페이지당 몇개인지
+     * @return 해당 page에 있는 게시글
      */
-    fun getPostList(cursor:Long,size:Long): List<PostListDto>
+    fun getPostList(page:Long, size:Long): List<PostListDto>
 }

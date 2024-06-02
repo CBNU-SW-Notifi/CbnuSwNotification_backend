@@ -10,7 +10,9 @@ import java.time.LocalDateTime
 @Entity
 @EntityListeners(AuditingEntityListener::class)
 class Post(
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     val title: String,
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     val content: String,
     @Enumerated(EnumType.STRING)
     val postType: PostType,

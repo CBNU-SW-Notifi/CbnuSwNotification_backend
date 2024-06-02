@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost
 
-import com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost.dto.PostReadResponse
+import com.CbnuSwNotification.CbnuSwNotification.common.dto.postReadDto.PostReadResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter

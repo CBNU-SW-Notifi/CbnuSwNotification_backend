@@ -12,6 +12,7 @@ plugins {
 	kotlin("jvm") version "1.9.24"
 	kotlin("plugin.spring") version "1.9.24"
 	kotlin("plugin.jpa") version "1.9.24"
+	kotlin("kapt") version "1.9.24"
 }
 
 allOpen{
@@ -51,12 +52,18 @@ dependencies {
 
 	//api doc
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+	//query-dsl
+	implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+	implementation("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs += "-Xjsr305=strict"
-		jvmTarget = "17"
+		jvmTarget = "21"
 	}
 }
 

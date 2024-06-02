@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrl
+package com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post

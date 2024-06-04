@@ -1,5 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.controller.informationPost
 
+import com.CbnuSwNotification.CbnuSwNotification.application.service.PostReadService
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.postReadDto.PostReadResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import io.swagger.v3.oas.annotations.Operation
@@ -12,8 +13,10 @@ import java.time.LocalDateTime
 
 @Tag(name = "Information Post API", description = "Information Post  API 목록")
 @RestController
-@RequestMapping("/api/v1/post")
-class ReadPostController {
+@RequestMapping("/api/v1/information-post")
+class ReadPostController(
+    private val postReadService: PostReadService,
+) {
 
     private val log = LoggerFactory.getLogger(ReadPostController::class.java)
 
@@ -23,16 +26,7 @@ class ReadPostController {
         @PathVariable(name = "id", required = true) @Parameter(description = "본문을 확인하고자 하는 게시글의 id") postId: Long,
     ): ResponseEntity<PostReadResponse> {
         log.info("정보 게시글 본문 조회 - ${postId}")
-
-        val response = PostReadResponse(
-            postId = 1,
-            title = "tmp",
-            content = "tmp",
-            imageUrls = listOf(),
-            attachedFiles = listOf(),
-            postType = PostType.COMMON,
-            createTime = LocalDateTime.now(),
-        )
+        val response = postReadService.readPost(postId)
         return ResponseEntity.ok().body(response)
     }
 }

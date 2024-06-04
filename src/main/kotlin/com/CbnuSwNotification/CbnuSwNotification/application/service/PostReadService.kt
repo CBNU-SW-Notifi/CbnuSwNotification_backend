@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional
 class PostReadService(
     private val postRepository: PostRepository,
 ) {
-    fun readPost(postId: Long): PostReadResponse {
-        val post = postRepository.findById(postId) ?: throw IllegalArgumentException("없는 게시글 입니다")
+    fun readPost(postId: Long): PostReadResponse? {
+        val post = postRepository.findById(postId) ?: return null
         //TODO: 사진 및 첨부파일 추가
         return PostReadResponse(
             postId = post.id!!,

@@ -26,7 +26,7 @@ class ReadPostController(
         @PathVariable(name = "id", required = true) @Parameter(description = "본문을 확인하고자 하는 게시글의 id") postId: Long,
     ): ResponseEntity<PostReadResponse> {
         log.info("정보 게시글 본문 조회 - ${postId}")
-        val response = postReadService.readPost(postId)
+        val response = postReadService.readPost(postId) ?: return ResponseEntity.notFound().build()
         return ResponseEntity.ok().body(response)
     }
 }

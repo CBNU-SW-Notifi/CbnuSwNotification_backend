@@ -43,4 +43,13 @@ class PostListRepositoryTest(
             Assertions.assertThat(postList2[i.toInt()].id).isEqualTo(postList[(i+size).toInt()])
         }
     }
+
+
+
+    @Test
+    fun postAmountTest(){
+        val amount = postListRepository.getAllPostAmount()
+
+        Assertions.assertThat(amount.toInt()).isEqualTo(postList.size)
+    }
 }

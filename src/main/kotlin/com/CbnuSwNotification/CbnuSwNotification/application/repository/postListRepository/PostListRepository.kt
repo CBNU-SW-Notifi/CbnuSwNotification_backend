@@ -10,4 +10,10 @@ interface PostListRepository {
      * @return 해당 page에 있는 게시글
      */
     fun getPostList(page:Long, size:Long): List<PostListDto>
+
+    /**
+     * 모든 게시글의 개수를 반환
+     * @return 게시글의 개수
+     */
+    fun getAllPostAmount(): Long
 }

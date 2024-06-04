@@ -3,7 +3,9 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.postLis
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QPost.post
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
+import com.querydsl.core.types.ExpressionUtils.count
 import com.querydsl.core.types.Projections
+import com.querydsl.core.types.dsl.Wildcard.count
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -29,5 +31,11 @@ class DbPostListRepository(
             .offset(page*size)
             .limit(size)
             .fetch()
+    }
+
+    override fun getAllPostAmount(): Long {
+        return querydsl.select(post.count())
+            .from(post)
+            .fetchFirst() ?: 0L
     }
 }

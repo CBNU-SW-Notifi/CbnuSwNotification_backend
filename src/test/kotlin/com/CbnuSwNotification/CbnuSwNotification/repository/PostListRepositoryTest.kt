@@ -26,14 +26,21 @@ class PostListRepositoryTest(
     }
 
     @Test
-    fun postListTest(){
-        var page = 0L
+    fun paginationTest(){
+        val page = 0L
         val size = 3L
 
         val postList1 = postListRepository.getPostList(page, size)
+        val postList2 = postListRepository.getPostList(page+1, size)
 
+        Assertions.assertThat(postList1.size).isEqualTo(size)
         for (i in 0 ..< size){
             Assertions.assertThat(postList1[i.toInt()].id).isEqualTo(postList[i.toInt()])
+        }
+
+        Assertions.assertThat(postList2.size).isEqualTo(size)
+        for (i in 0 ..< size){
+            Assertions.assertThat(postList2[i.toInt()].id).isEqualTo(postList[(i+size).toInt()])
         }
     }
 }

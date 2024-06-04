@@ -13,8 +13,16 @@ import org.springframework.transaction.annotation.Transactional
 class PostListService(
     private val postListRepository: PostListRepository,
 ) {
-    fun getPostList(page: Long, size: Long): PaginationResultResponse<PostListDto> {
-        val postList = postListRepository.getPostList(page, size)
+    fun getPostList(page: Long, size: Long): PaginationResultResponse<PostMetadataResponse> {
+        val postList = postListRepository.getPostList(page, size).map {
+            postListDto ->
+            PostMetadataResponse(
+                postId = postListDto.id,
+                title = postListDto.title,
+                postType = postListDto.postType,
+                createTime = postListDto.createTime,
+            )
+        }
         val totalElement = postListRepository.getAllPostAmount()
 
         return PaginationResultResponse(
@@ -22,9 +30,13 @@ class PostListService(
             pagination = Pagination(
                 elementSizeOfPage = size,
                 currentPage = page,
-                totalPage = (totalElement+size-1)/size,
+                totalPage = getTotalPage(totalElement, size),
                 totalElement = totalElement,
             )
         )
+    }
+
+    private fun getTotalPage(totalElement: Long, size: Long): Long {
+        return (totalElement + size - 1) / size
     }
 }

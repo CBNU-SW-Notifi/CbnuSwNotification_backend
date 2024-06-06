@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.common.dataType
 
-data class AttachedFile(
+data class AttachedFileDto(
     val name: String,
     val url: String,
 )

@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 kotlin {
 	jvmToolchain {
-		(this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(17))
+		(this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(21))
 	}
 }
 

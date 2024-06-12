@@ -14,5 +14,14 @@ class PostFixture {
                 createTime = LocalDateTime.now(),
             )
         }
+
+        fun createPost(str:String): Post{
+            return Post(
+                title = "테스트",
+                content = str,
+                postType = PostType.COMMON,
+                createTime = LocalDateTime.now(),
+            )
+        }
     }
 }

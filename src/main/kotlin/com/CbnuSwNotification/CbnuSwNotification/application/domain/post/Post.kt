@@ -12,7 +12,8 @@ import java.time.LocalDateTime
 class Post(
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     val title: String,
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
+    @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
+    @Lob
     val content: String,
     @Enumerated(EnumType.STRING)
     val postType: PostType,

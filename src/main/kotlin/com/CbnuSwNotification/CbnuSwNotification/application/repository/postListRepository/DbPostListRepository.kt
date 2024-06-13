@@ -3,6 +3,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.postLis
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QPost.post
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
+import com.querydsl.core.types.ExpressionUtils.and
 import com.querydsl.core.types.ExpressionUtils.count
 import com.querydsl.core.types.Projections
 import com.querydsl.core.types.dsl.Wildcard.count
@@ -27,7 +28,7 @@ class DbPostListRepository(
                 post.createTime
             ))
             .from(post)
-            .orderBy(post.createTime.desc())
+            .orderBy(post.createTime.desc(), post.id.asc())
             .offset(page*size)
             .limit(size)
             .fetch()

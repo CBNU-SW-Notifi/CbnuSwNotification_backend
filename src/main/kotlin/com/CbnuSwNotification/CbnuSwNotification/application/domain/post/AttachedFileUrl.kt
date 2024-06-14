@@ -13,6 +13,7 @@ class AttachedFileUrl {
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     val name: String
 
+    @Lob
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)

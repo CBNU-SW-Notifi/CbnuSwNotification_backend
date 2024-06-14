@@ -9,6 +9,7 @@ class ImageUrl {
     @Column(name = "image_url_id")
     val id: Long? = null
 
+    @Lob
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)

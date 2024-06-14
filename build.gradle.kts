@@ -50,6 +50,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+	//크롤링
+	implementation("org.jsoup:jsoup:1.17.2")
+
 	//api doc
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 

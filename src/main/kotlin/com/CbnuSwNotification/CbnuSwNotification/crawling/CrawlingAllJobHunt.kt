@@ -28,7 +28,7 @@ class CrawlingAllJobHunt(
     private val conn= Jsoup.connect(targetUrl)
     private val log = LoggerFactory.getLogger(CrawlingAllJobHunt::class.java)
 
-    @EventListener(ApplicationReadyEvent::class)
+    //@EventListener(ApplicationReadyEvent::class)
     @Scheduled(cron = "0 0 11,15,19 * * *", zone = "Asia/Seoul")
     fun getAllPost(){
         val document = conn.get()

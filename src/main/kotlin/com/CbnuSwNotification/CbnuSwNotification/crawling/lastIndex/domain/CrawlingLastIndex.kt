@@ -10,7 +10,7 @@ import jakarta.persistence.Lob
  * 해당 url의 마지막 크롤링 대상을 저장하기 위한 도메인
  */
 @Entity
-class CbnuSoftwareCrawlingLastIndex(
+class CrawlingLastIndex(
     /**
      * 크롤링 대상 페이지 주소
      */

@@ -5,10 +5,19 @@ import com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CrawlingLastIndex
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository.CrawlingLastIndexRepository
+import jakarta.annotation.PostConstruct
 import org.jsoup.Jsoup
+import org.slf4j.LoggerFactory
+import org.springframework.boot.context.event.ApplicationReadyEvent
+import org.springframework.context.event.EventListener
+import org.springframework.scheduling.annotation.Scheduled
+import org.springframework.scheduling.annotation.Schedules
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
-@Component
+@Service
+@Transactional
 class CrawlingAllJobHunt(
     private val postRepository: PostRepository,
     private val imageUrlRepository: ImageUrlRepository,
@@ -17,11 +26,15 @@ class CrawlingAllJobHunt(
 ) {
     private val targetUrl = "https://software.cbnu.ac.kr/sub0402"
     private val conn= Jsoup.connect(targetUrl)
+    private val log = LoggerFactory.getLogger(CrawlingAllJobHunt::class.java)
 
+    @EventListener(ApplicationReadyEvent::class)
+    @Scheduled(cron = "0 0 11,15,19 * * *", zone = "Asia/Seoul")
     fun getAllPost(){
         val document = conn.get()
         val jobHuntList = document.getElementsByClass("bd_lst")[0].getElementsByTag("tbody")[0].getElementsByTag("tr")
         val lastIndex = getLastIndex()
+        log.info("크롤링 시작: ${lastIndex}")
 
         for(line in jobHuntList) {
             val url = line.getElementsByClass("title")[0].childNodes()[1].attr("href")
@@ -68,9 +81,6 @@ class CrawlingAllJobHunt(
     private fun alreadyCrawled(strLastNum: String, strListNum: String): Boolean {
         val listNum = strListNum.toLong()
         val lastNum = strLastNum.toLong()
-
-        println("listNum = ${listNum}")
-        println("lastNum = ${lastNum}")
 
         return (listNum <= lastNum)
     }

@@ -22,7 +22,7 @@ class CrawlingLastIndex(
      * 어떤 내용이든 들어갈 수 있도록 string으로 제작
      * 크롤링시 추가적인 처리를 하여 사용
      */
-    val lastIndex: String,
+    var lastIndex: String,
 ) {
     @Id
     @GeneratedValue

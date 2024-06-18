@@ -6,6 +6,7 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -15,8 +16,10 @@ class CrawlingJobHuntPost(
 ) {
     private val document: Document
     private val conn=Jsoup.connect(url)
+    private val log = LoggerFactory.getLogger(CrawlingJobHuntPost::class.java)
 
     init {
+        log.info("크롤링을 위한 연결: ${url}")
         this.document = conn.get()
     }
 

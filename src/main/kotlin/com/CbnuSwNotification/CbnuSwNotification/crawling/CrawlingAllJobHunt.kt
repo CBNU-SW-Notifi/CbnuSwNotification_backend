@@ -63,6 +63,7 @@ class CrawlingAllJobHunt(
         if (jobHuntList!=null) {
             lastIndex.lastIndex=jobHuntList[0].getElementsByClass("no")[0].text().trim()
         }
+        log.info("크롤링 종료: ${lastIndex}")
     }
 
     private fun getLastIndex():CrawlingLastIndex{

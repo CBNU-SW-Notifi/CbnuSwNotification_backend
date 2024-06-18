@@ -16,8 +16,9 @@ class DbJobHuntCrawlingLastIndexRepository(
         return cbnuSoftwareCrawlingLastIndex.id!!
     }
 
-    override fun findLastLog(url: String): CbnuSoftwareCrawlingLastIndex {
+    override fun findByUrl(url: String): CbnuSoftwareCrawlingLastIndex {
         TODO("Not yet implemented")
     }
+
 
 }

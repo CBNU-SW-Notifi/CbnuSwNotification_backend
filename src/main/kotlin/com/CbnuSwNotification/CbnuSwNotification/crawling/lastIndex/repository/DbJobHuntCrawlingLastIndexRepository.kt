@@ -1,6 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CbnuSoftwareCrawlingLastIndex
+import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.QCbnuSoftwareCrawlingLastIndex
+import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.QCbnuSoftwareCrawlingLastIndex.cbnuSoftwareCrawlingLastIndex
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -16,8 +18,12 @@ class DbJobHuntCrawlingLastIndexRepository(
         return cbnuSoftwareCrawlingLastIndex.id!!
     }
 
-    override fun findByUrl(url: String): CbnuSoftwareCrawlingLastIndex {
-        TODO("Not yet implemented")
+    override fun findByUrl(url: String): CbnuSoftwareCrawlingLastIndex? {
+        return querydsl
+            .select(cbnuSoftwareCrawlingLastIndex)
+            .from(cbnuSoftwareCrawlingLastIndex)
+            .where(cbnuSoftwareCrawlingLastIndex.url.eq(url))
+            .fetchOne()
     }
 
 

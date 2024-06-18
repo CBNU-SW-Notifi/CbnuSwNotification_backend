@@ -10,6 +10,6 @@ interface JobHuntCrawlingLastIndexRepository {
      * @param url 크롤링 대상인 url
      * @return 해당 url에서 크롤링한 마지막 index 또는 number
      */
-    fun findByUrl(url: String): CbnuSoftwareCrawlingLastIndex
+    fun findByUrl(url: String): CbnuSoftwareCrawlingLastIndex?
 
 }

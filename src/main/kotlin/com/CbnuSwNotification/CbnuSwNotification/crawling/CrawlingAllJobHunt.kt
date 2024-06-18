@@ -9,6 +9,7 @@ import jakarta.annotation.PostConstruct
 import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
+import org.springframework.context.annotation.Profile
 import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.scheduling.annotation.Schedules
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+@Profile("!test")
 @Service
 @Transactional
 class CrawlingAllJobHunt(
@@ -28,7 +30,7 @@ class CrawlingAllJobHunt(
     private val conn= Jsoup.connect(targetUrl)
     private val log = LoggerFactory.getLogger(CrawlingAllJobHunt::class.java)
 
-    //@EventListener(ApplicationReadyEvent::class)
+    @EventListener(ApplicationReadyEvent::class)
     @Scheduled(cron = "0 0 11,15,19 * * *", zone = "Asia/Seoul")
     fun getAllPost(){
         val document = conn.get()

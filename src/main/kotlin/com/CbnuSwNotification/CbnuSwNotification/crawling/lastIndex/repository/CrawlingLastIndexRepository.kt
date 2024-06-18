@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CrawlingLastIndex
 
-interface JobHuntCrawlingLastIndexRepository {
+interface CrawlingLastIndexRepository {
     fun save(crawlingLastIndex: CrawlingLastIndex) :Long
 
     /**

@@ -7,9 +7,9 @@ import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
 @Repository
-class DbJobHuntCrawlingLastIndexRepository(
+class DbCrawlingLastIndexRepository(
     private val em: EntityManager
-) : JobHuntCrawlingLastIndexRepository {
+) : CrawlingLastIndexRepository {
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
     override fun save(crawlingLastIndex: CrawlingLastIndex): Long {

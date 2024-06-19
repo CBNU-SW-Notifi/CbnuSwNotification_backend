@@ -6,6 +6,7 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.jsoup.safety.Safelist
 import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -23,10 +24,20 @@ class CrawlingJobHuntPost(
         this.document = conn.get()
     }
 
+    private fun br2nl(html: String?): String? {
+        if (html == null) return html
+        val document: Document = Jsoup.parse(html)
+        document.outputSettings(Document.OutputSettings().prettyPrint(false)) //makes html() preserve linebreaks and spacing
+        document.select("br").append("\n")
+        document.select("p").prepend("\n\n")
+        val s: String = document.html().replace("\\n", "\n")
+        return Jsoup.clean(s, "", Safelist.none(), Document.OutputSettings().prettyPrint(false))
+    }
+
     fun getPost(): Post {
         return Post(
             title = document.getElementsByClass("np_18px").text(),
-            content = document.getElementsByClass("xe_content")[0].text(),
+            content = br2nl(document.getElementsByClass("xe_content")[0].html())?: "",
             createTime = LocalDateTime.parse(
                 document.getElementsByClass("date")[0].text(),
                 DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")

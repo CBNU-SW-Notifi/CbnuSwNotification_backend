@@ -30,7 +30,7 @@ class CrawlingJobHuntPost(
         document.outputSettings(Document.OutputSettings().prettyPrint(false)) //makes html() preserve linebreaks and spacing
         document.select("br").append("\n")
         document.select("p").prepend("\n\n")
-        val s: String = document.html().replace("\\n", "\n")
+        val s: String = document.html().replace("\\n", "\n").replace("&nbsp;"," ")
         return Jsoup.clean(s, "", Safelist.none(), Document.OutputSettings().prettyPrint(false))
     }
 

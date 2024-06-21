@@ -10,10 +10,9 @@ import lombok.ToString
 abstract class ValueObject<T> {
 
     /**
-     * 값이 조건에 맞는지 판단
+     * 값이 조건에 맞는지 판단, 조건에 맞지 않을 경우 에러 발생
      * @param value 값이 조건에 맞는지 판단할 값
-     * @return 조건에 맞을 경우 true 아닐 경우 false
      */
-    protected abstract fun isValid(value: T): Boolean
+    protected abstract fun isValid(value: T)
 
 }

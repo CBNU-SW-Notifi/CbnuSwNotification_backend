@@ -61,6 +61,10 @@ dependencies {
 	implementation("com.querydsl:querydsl-apt:5.0.0:jakarta")
 	kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
 	kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+	//알림
+	implementation("com.google.firebase:firebase-admin:9.2.0")
+
 }
 
 tasks.withType<KotlinCompile> {

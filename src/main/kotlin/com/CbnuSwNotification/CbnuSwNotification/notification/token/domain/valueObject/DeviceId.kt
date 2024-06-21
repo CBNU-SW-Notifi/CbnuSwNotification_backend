@@ -1,15 +1,14 @@
 package com.CbnuSwNotification.CbnuSwNotification.notification.token.domain.valueObject
 
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.ValueObject
-import jakarta.persistence.Embeddable
 import jakarta.persistence.Lob
-import lombok.EqualsAndHashCode
+import java.io.Serializable
 
 
 class DeviceId(
     @Lob
     val id: String
-) : ValueObject<String>() {
+) : ValueObject<String>(), Serializable {
 
     init {
         checkValid(id)

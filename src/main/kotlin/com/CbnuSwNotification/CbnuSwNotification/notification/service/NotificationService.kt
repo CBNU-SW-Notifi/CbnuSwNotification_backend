@@ -13,7 +13,9 @@ class NotificationService(
 ) {
     fun sendMessageToAllUser(title:String,body:String){
         val tokens = tokenRepository.getAllDeviceToken()
-        androidNotification.sendMessage(tokens, title, body)
+        if (tokens.isNotEmpty()) {
+            androidNotification.sendMessage(tokens, title, body)
+        }
     }
 
     fun updateToken(id:String,token:String){

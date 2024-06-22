@@ -17,6 +17,6 @@ interface TokenRepository {
      * @param androidId 토근을 업데이트 하고 싶은 androidId
      * @param token 업데이트할 토큰 값
      */
-    fun updateTokenByAndroidId(androidId: String, token: String)
+    fun updateTokenByAndroidId(deviceId: String, token: String)
 
 }

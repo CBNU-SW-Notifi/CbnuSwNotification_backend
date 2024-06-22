@@ -10,7 +10,7 @@ class DeviceIdTest {
     fun deviceIdTest(){
         val value = "ahgvghvasviu54165108"
         val deviceId = DeviceId(value)
-        Assertions.assertThat(deviceId.id).isEqualTo(value)
+        Assertions.assertThat(deviceId.deviceId).isEqualTo(value)
     }
 
     @Test

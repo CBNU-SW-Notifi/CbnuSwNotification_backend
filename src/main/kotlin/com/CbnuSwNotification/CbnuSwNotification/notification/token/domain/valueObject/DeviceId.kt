@@ -11,12 +11,12 @@ import java.io.Serializable
 @EqualsAndHashCode
 class DeviceId(
     @Lob
-    val id: String
-) : Serializable {
+    val deviceId: String
+) {
 
 
     init {
-        checkValid(id)
+        checkValid(deviceId)
     }
 
     private fun checkValid(value: String) {

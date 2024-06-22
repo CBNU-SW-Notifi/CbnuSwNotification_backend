@@ -14,8 +14,8 @@ class DbTokenRepository(
 ):TokenRepository {
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
-    override fun save(token: Token) {
-        em.persist(em)
+    override fun save(token: Token){
+        em.persist(token)
     }
 
     override fun getAllDeviceToken(): List<String> {
@@ -25,12 +25,13 @@ class DbTokenRepository(
             .fetch()
     }
 
-    override fun updateTokenByAndroidId(androidId: String, token: String) {
-        var oldToken = em.find(Token::class.java, androidId)
+    override fun updateTokenByAndroidId(deviceId: String, token: String) {
+        var oldToken = findTokenByDeviceId(deviceId)
+
 
         if(oldToken==null){
             oldToken= Token(
-                id = DeviceId(androidId),
+                deviceId = DeviceId(deviceId),
                 token = DeviceToken(token),
             )
             save(oldToken)
@@ -38,5 +39,13 @@ class DbTokenRepository(
         else{
             oldToken.token = DeviceToken(token)
         }
+    }
+
+    private fun findTokenByDeviceId(id: String): Token? {
+        return querydsl
+            .select(token1)
+            .from(token1)
+            .where(token1.deviceId.deviceId.eq(id))
+            .fetchOne()
     }
 }

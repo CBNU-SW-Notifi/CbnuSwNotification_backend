@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.repository
+package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl

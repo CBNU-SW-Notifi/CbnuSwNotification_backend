@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.entity.valueObject
+package com.CbnuSwNotification.CbnuSwNotification.test.entity.valueObject
 
 import com.CbnuSwNotification.CbnuSwNotification.notification.token.domain.valueObject.DeviceId
 import org.assertj.core.api.Assertions

@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.entity
+package com.CbnuSwNotification.CbnuSwNotification.test.entity
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.notification.token.domain.Token

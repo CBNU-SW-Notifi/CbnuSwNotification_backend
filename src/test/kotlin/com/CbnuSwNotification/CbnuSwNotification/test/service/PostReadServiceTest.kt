@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.service
+package com.CbnuSwNotification.CbnuSwNotification.test.service
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post

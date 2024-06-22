@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.api
+package com.CbnuSwNotification.CbnuSwNotification.test.api
 
 import com.CbnuSwNotification.CbnuSwNotification.ApiTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository

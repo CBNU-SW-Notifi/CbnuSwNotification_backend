@@ -24,6 +24,9 @@ class FirebaseConfig(
             .builder()
             .setCredentials(GoogleCredentials.fromStream(fileInputStream))
             .build()
+        if (FirebaseApp.getApps().size > 0) {
+            return FirebaseApp.getApps().first()
+        }
         return FirebaseApp.initializeApp(options)
     }
 

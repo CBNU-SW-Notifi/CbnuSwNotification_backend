@@ -20,7 +20,7 @@ class NotificationController(
 
     @Operation(summary = "전체에게 메시지 보내기", description = "토큰이 저장되어 있는 모든 사용자에게 알림을 보냅니다.")
     @PostMapping("/sendToAll")
-    fun sendNotificationToAll(@RequestBody notificationRequest: NotificationRequest){
+    fun sendNotificationToAll(@RequestBody @Valid notificationRequest: NotificationRequest){
         log.info("전체에게 알림 발송 요청")
         notificationService.sendMessageToAllUser(
             title = notificationRequest.title,

@@ -5,6 +5,7 @@ import com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CrawlingLastIndex
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository.CrawlingLastIndexRepository
+import com.CbnuSwNotification.CbnuSwNotification.notification.service.NotificationService
 import jakarta.annotation.PostConstruct
 import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
@@ -25,6 +26,7 @@ class CrawlingAllJobHunt(
     private val imageUrlRepository: ImageUrlRepository,
     private val attachedFileUrlRepository: AttachedFileUrlRepository,
     private val crawlingLastIndexRepository: CrawlingLastIndexRepository,
+    private val notificationService: NotificationService,
 ) {
     private val targetUrl = "https://software.cbnu.ac.kr/sub0402"
     private val conn= Jsoup.connect(targetUrl)
@@ -38,6 +40,7 @@ class CrawlingAllJobHunt(
         val lastIndex = getLastIndex()
         log.info("크롤링 시작: ${lastIndex}")
 
+        var cnt=0;
         for(line in jobHuntList) {
             val url = line.getElementsByClass("title")[0].childNodes()[1].attr("href")
             val num = line.getElementsByClass("no")[0].text().trim()
@@ -60,12 +63,22 @@ class CrawlingAllJobHunt(
             for(file in files){
                 attachedFileUrlRepository.save(file)
             }
+            cnt++
         }
 
         if (jobHuntList!=null) {
             lastIndex.lastIndex=jobHuntList[0].getElementsByClass("no")[0].text().trim()
         }
         log.info("크롤링 종료: ${lastIndex}")
+
+
+        log.info("알림 보내기")
+        if (cnt > 0) {
+            notificationService.sendMessageToAllUser(
+                title = "취업정보 업데이트",
+                body = "${cnt}건의 취업정보가 추가 되었습니다"
+            )
+        }
     }
 
     private fun getLastIndex():CrawlingLastIndex{

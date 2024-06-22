@@ -4,7 +4,7 @@ import com.CbnuSwNotification.CbnuSwNotification.notification.token.domain.Token
 
 
 interface TokenRepository {
-    fun save(token: Token): Long
+    fun save(token: Token)
 
     /**
      * 저장되어 있는 모든 토큰을 가져옴

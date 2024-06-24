@@ -1,7 +1,6 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.domain.post
+package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
 import jakarta.persistence.*
-import lombok.Getter
 
 @Entity
 class AttachedFileUrl {

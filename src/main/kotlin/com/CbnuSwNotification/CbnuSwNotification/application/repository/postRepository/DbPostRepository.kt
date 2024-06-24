@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 

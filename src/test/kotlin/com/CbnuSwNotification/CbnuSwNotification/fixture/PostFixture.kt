@@ -1,12 +1,12 @@
 package com.CbnuSwNotification.CbnuSwNotification.fixture
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import java.time.LocalDateTime
 
 class PostFixture {
     companion object{
-        fun createPost(): Post{
+        fun createPost(): Post {
             return Post(
                 title = "테스트",
                 content = "테스트 내용",
@@ -15,7 +15,7 @@ class PostFixture {
             )
         }
 
-        fun createPost(str:String): Post{
+        fun createPost(str:String): Post {
             return Post(
                 title = "테스트",
                 content = str,

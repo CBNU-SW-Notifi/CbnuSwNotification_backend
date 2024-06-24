@@ -1,12 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QPost.post
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
-import com.querydsl.core.types.ExpressionUtils.and
-import com.querydsl.core.types.ExpressionUtils.count
 import com.querydsl.core.types.Projections
-import com.querydsl.core.types.dsl.Wildcard.count
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository

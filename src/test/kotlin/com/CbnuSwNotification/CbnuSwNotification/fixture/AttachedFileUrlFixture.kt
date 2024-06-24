@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.fixture
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
 
 class AttachedFileUrlFixture {
     companion object{

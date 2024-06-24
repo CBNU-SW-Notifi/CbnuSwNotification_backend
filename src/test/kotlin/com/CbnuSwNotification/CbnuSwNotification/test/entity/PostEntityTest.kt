@@ -1,7 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.entity
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions

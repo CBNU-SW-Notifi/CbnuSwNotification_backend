@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document

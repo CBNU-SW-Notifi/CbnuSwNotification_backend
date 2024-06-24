@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.domain.post
+package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import jakarta.persistence.*

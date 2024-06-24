@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QAttachedFileUrl.attachedFileUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager

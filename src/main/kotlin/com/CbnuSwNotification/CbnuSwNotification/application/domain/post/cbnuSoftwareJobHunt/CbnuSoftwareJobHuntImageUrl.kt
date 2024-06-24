@@ -3,10 +3,10 @@ package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSo
 import jakarta.persistence.*
 
 @Entity
-class ImageUrl {
+class CbnuSoftwareJobHuntImageUrl {
     @Id
     @GeneratedValue
-    @Column(name = "image_url_id")
+    @Column(name = "cbnuSoftware_JobHunt_image_url_id")
     val id: Long? = null
 
     @Lob

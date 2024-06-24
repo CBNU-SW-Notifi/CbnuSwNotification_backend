@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
@@ -48,13 +48,13 @@ class CrawlingJobHuntPost(
         )
     }
 
-    fun getImage(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<ImageUrl> {
+    fun getImage(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntImageUrl> {
         val images = document.getElementsByClass("xe_content")[0].getElementsByTag("img")
-        val imageList = mutableListOf<ImageUrl>()
+        val imageList = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
         for (image in images) {
             if(image.attr("src").length<=1000) {
                 imageList.add(
-                    ImageUrl(
+                    CbnuSoftwareJobHuntImageUrl(
                         url = image.attr("src"),
                         post = cbnuSoftwareJobHuntPost,
                     )

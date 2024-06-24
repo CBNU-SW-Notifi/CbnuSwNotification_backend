@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository.ImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class ImageUrlRepositoryTest(
+class CbnuSoftwareJobHuntImageUrlRepositoryTest(
     @Autowired private val imageUrlRepository: ImageUrlRepository,
     @Autowired private val postRepository: PostRepository,
 ) : SpringTestSetting() {
@@ -31,8 +31,8 @@ class ImageUrlRepositoryTest(
 
     @Test
     fun findAllByPost() {
-        val post1Images = mutableListOf<ImageUrl>()
-        val post2Images = mutableListOf<ImageUrl>()
+        val post1Images = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
+        val post2Images = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
         for (i in 1..5) {
             val tmp1 = ImageUrlFixture.createUrlImage(cbnuSoftwareJobHuntPost1)
             imageUrlRepository.save(tmp1)

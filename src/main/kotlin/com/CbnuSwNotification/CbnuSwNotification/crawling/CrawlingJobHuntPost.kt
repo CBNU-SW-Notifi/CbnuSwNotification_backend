@@ -3,7 +3,6 @@ package com.CbnuSwNotification.CbnuSwNotification.crawling
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
-import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.safety.Safelist
@@ -44,7 +43,6 @@ class CrawlingJobHuntPost(
                 document.getElementsByClass("date")[0].text(),
                 DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")
             ),
-            postType = PostType.COMMON,
         )
     }
 

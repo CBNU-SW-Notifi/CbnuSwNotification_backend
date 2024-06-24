@@ -19,7 +19,6 @@ class PostListService(
             PostMetadataResponse(
                 postId = postListDto.id,
                 title = postListDto.title,
-                postType = postListDto.postType,
                 createTime = postListDto.createTime,
             )
         }

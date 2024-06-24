@@ -20,7 +20,6 @@ class DbPostListRepository(
             .select(Projections.constructor(PostListDto::class.java,
                 cbnuSoftwareJobHuntPost.id,
                 cbnuSoftwareJobHuntPost.title,
-                cbnuSoftwareJobHuntPost.postType,
                 cbnuSoftwareJobHuntPost.createTime
             ))
             .from(cbnuSoftwareJobHuntPost)

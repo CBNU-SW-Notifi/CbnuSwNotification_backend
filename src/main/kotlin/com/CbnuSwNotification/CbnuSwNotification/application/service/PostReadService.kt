@@ -32,7 +32,6 @@ class PostReadService(
             content = post.content,
             imageUrls = imageUrls,
             attachedFiles = files,
-            postType = post.postType,
             createTime = post.createTime,
             )
 

@@ -1,6 +1,5 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
-import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -14,13 +13,11 @@ class CbnuSoftwareJobHuntPost(
     @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
     @Lob
     val content: String,
-    @Enumerated(EnumType.STRING)
-    val postType: PostType,
     val createTime: LocalDateTime,
 ) {
     @Id
     @GeneratedValue
-    @Column(name = "cbnuSoftware_JobHunt_post_id")
+    @Column(name = "cbnu_software_job_hunt_post_id")
     val id: Long? = null
 
     @CreatedDate

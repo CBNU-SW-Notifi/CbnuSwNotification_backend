@@ -6,14 +6,14 @@ import jakarta.persistence.*
 class CbnuSoftwareJobHuntImageUrl {
     @Id
     @GeneratedValue
-    @Column(name = "cbnuSoftware_JobHunt_image_url_id")
+    @Column(name = "cbnu_software_job_hunt_image_url_id")
     val id: Long? = null
 
     @Lob
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
+    @JoinColumn(name="cbnu_software_job_hunt_post_id", nullable = false)
     val post: CbnuSoftwareJobHuntPost
 
     constructor(url: String, post: CbnuSoftwareJobHuntPost) {

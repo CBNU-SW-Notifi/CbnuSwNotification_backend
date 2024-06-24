@@ -6,7 +6,7 @@ import jakarta.persistence.*
 class CbnuSoftwareJobHuntAttachedFileUrl {
     @Id
     @GeneratedValue
-    @Column(name = "cbnuSoftware_JobHunt_attached_file_url_id")
+    @Column(name = "cbnu_software_job_hunt_attached_file_url_id")
     val id: Long? = null
 
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
@@ -16,7 +16,7 @@ class CbnuSoftwareJobHuntAttachedFileUrl {
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
+    @JoinColumn(name="cbnu_software_job_hunt_post_id", nullable = false)
     val post: CbnuSoftwareJobHuntPost
 
     constructor(name: String, url: String, post: CbnuSoftwareJobHuntPost) {

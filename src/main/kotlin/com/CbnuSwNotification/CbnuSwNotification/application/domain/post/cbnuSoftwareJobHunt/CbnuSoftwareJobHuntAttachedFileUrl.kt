@@ -3,10 +3,10 @@ package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSo
 import jakarta.persistence.*
 
 @Entity
-class AttachedFileUrl {
+class CbnuSoftwareJobHuntAttachedFileUrl {
     @Id
     @GeneratedValue
-    @Column(name = "attached_file_url_id")
+    @Column(name = "cbnuSoftware_JobHunt_attached_file_url_id")
     val id: Long? = null
 
     @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
@@ -19,9 +19,9 @@ class AttachedFileUrl {
     @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
     val post: CbnuSoftwareJobHuntPost
 
-    constructor(name: String, url: String, cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost) {
+    constructor(name: String, url: String, post: CbnuSoftwareJobHuntPost) {
         this.name = name
         this.url = url
-        this.post = cbnuSoftwareJobHuntPost
+        this.post = post
     }
 }

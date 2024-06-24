@@ -16,8 +16,8 @@ class ImageUrl {
     @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
     val post: CbnuSoftwareJobHuntPost
 
-    constructor(url: String, cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost) {
+    constructor(url: String, post: CbnuSoftwareJobHuntPost) {
         this.url = url
-        this.post = cbnuSoftwareJobHuntPost
+        this.post = post
     }
 }

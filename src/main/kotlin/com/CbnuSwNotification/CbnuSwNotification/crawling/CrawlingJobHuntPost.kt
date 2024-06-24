@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
@@ -56,7 +56,7 @@ class CrawlingJobHuntPost(
                 imageList.add(
                     ImageUrl(
                         url = image.attr("src"),
-                        cbnuSoftwareJobHuntPost = cbnuSoftwareJobHuntPost,
+                        post = cbnuSoftwareJobHuntPost,
                     )
                 )
             }
@@ -64,18 +64,18 @@ class CrawlingJobHuntPost(
         return imageList
     }
 
-    fun getAttachedFile(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<AttachedFileUrl> {
+    fun getAttachedFile(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntAttachedFileUrl> {
         val fnt=document.getElementsByClass("rd_fnt")
-        val fileList= mutableListOf<AttachedFileUrl>()
+        val fileList= mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
         if(fnt.size>=1) {
             val files = fnt[0].getElementsByClass("bubble")
             for (file in files) {
                 if(file.attr("href").length<=1000) {
                     fileList.add(
-                        AttachedFileUrl(
+                        CbnuSoftwareJobHuntAttachedFileUrl(
                             name = file.childNodes()[0].toString(),
                             url = file.attr("href"),
-                            cbnuSoftwareJobHuntPost = cbnuSoftwareJobHuntPost,
+                            post = cbnuSoftwareJobHuntPost,
                         )
                     )
                 }

@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository.AttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class AttachedFileUrlRepositoryTest(
+class CbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val attachedFileUrlRepository: AttachedFileUrlRepository,
 ) : SpringTestSetting() {
@@ -30,8 +30,8 @@ class AttachedFileUrlRepositoryTest(
 
     @Test
     fun findAllAttachedFileByPost(){
-        val files1 = mutableListOf<AttachedFileUrl>()
-        val files2 = mutableListOf<AttachedFileUrl>()
+        val files1 = mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
+        val files2 = mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
 
         for(i in 1..5){
             val tmp1 = AttachedFileUrlFixture.createAttachedFileUrl(cbnuSoftwareJobHuntPost1)

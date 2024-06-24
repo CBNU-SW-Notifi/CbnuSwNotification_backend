@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import kotlin.math.min
 
-class PostListServiceTest(
+class CbnuSoftwareJobHuntPostListServiceTest(
     @Autowired private val postListService: PostListService,
     @Autowired private val postRepository: PostRepository,
 ) : SpringTestSetting() {

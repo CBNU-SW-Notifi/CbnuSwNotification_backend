@@ -13,11 +13,11 @@ class ImageUrl {
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id", nullable = false)
-    val post: Post
+    @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
+    val post: CbnuSoftwareJobHuntPost
 
-    constructor(url: String, post: Post) {
+    constructor(url: String, cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost) {
         this.url = url
-        this.post = post
+        this.post = cbnuSoftwareJobHuntPost
     }
 }

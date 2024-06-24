@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 
-class GetPostListTest(
+class GetCbnuSoftwareJobHuntPostListTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val mockMvc: MockMvc,
 ) : ApiTestSetting() {

@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
 interface AttachedFileUrlRepository {
 
@@ -18,9 +18,9 @@ interface AttachedFileUrlRepository {
     fun findById(id: Long): AttachedFileUrl
 
     /**
-     * @param post 첨부파일 리스트를 얻고자하는 POST객체
+     * @param cbnuSoftwareJobHuntPost 첨부파일 리스트를 얻고자하는 POST객체
      * @return 해당 POST에 포함된 AttachedFileUrl리스트
      */
-    fun findAllByPost(post: Post): List<AttachedFileUrl>
+    fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<AttachedFileUrl>
 
 }

@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QImageUrl.imageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.QImageUrl.imageUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -22,11 +22,11 @@ class DbImageUrlRepository(
         return em.find(ImageUrl::class.java, id)
     }
 
-    override fun findAllByPost(post: Post): List<ImageUrl> {
+    override fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<ImageUrl> {
         return querydsl
             .select(imageUrl)
             .from(imageUrl)
-            .where(imageUrl.post.eq(post))
+            .where(imageUrl.post.eq(cbnuSoftwareJobHuntPost))
             .fetch()
     }
 }

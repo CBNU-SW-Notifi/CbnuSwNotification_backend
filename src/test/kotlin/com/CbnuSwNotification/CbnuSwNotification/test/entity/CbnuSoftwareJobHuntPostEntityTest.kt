@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import java.time.LocalDateTime
 
-class PostEntityTest(
+class CbnuSoftwareJobHuntPostEntityTest(
     @Autowired private val postRepository: PostRepository,
 ):SpringTestSetting(){
 

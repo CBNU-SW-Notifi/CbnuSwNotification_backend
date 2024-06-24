@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
 interface ImageUrlRepository {
 
@@ -18,9 +18,9 @@ interface ImageUrlRepository {
     fun findById(id: Long): ImageUrl
 
     /**
-     * @param post 사진을 얻고자하는 post객체
+     * @param cbnuSoftwareJobHuntPost 사진을 얻고자하는 post객체
      * @return 해당 post의 imageUrl리스트
      */
-    fun findAllByPost(post: Post): List<ImageUrl>
+    fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<ImageUrl>
 
 }

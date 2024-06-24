@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QAttachedFileUrl.attachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.QAttachedFileUrl.attachedFileUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -23,11 +23,11 @@ class DbAttachedFileUrlRepository(
         return em.find(AttachedFileUrl::class.java, id)
     }
 
-    override fun findAllByPost(post: Post): List<AttachedFileUrl> {
+    override fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<AttachedFileUrl> {
         return querydsl
             .select(attachedFileUrl)
             .from(attachedFileUrl)
-            .where(attachedFileUrl.post.eq(post))
+            .where(attachedFileUrl.post.eq(cbnuSoftwareJobHuntPost))
             .fetch()
     }
 }

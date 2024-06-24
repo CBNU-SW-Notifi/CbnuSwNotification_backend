@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.crawling
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.AttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -36,8 +36,8 @@ class CrawlingJobHuntPost(
         return Jsoup.clean(s, "", Safelist.none(), Document.OutputSettings().prettyPrint(false))
     }
 
-    fun getPost(): Post {
-        return Post(
+    fun getPost(): CbnuSoftwareJobHuntPost {
+        return CbnuSoftwareJobHuntPost(
             title = document.getElementsByClass("np_18px").text(),
             content = br2nl(document.getElementsByClass("xe_content")[0].html())?: "",
             createTime = LocalDateTime.parse(
@@ -48,7 +48,7 @@ class CrawlingJobHuntPost(
         )
     }
 
-    fun getImage(post: Post): List<ImageUrl> {
+    fun getImage(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<ImageUrl> {
         val images = document.getElementsByClass("xe_content")[0].getElementsByTag("img")
         val imageList = mutableListOf<ImageUrl>()
         for (image in images) {
@@ -56,7 +56,7 @@ class CrawlingJobHuntPost(
                 imageList.add(
                     ImageUrl(
                         url = image.attr("src"),
-                        post = post,
+                        cbnuSoftwareJobHuntPost = cbnuSoftwareJobHuntPost,
                     )
                 )
             }
@@ -64,7 +64,7 @@ class CrawlingJobHuntPost(
         return imageList
     }
 
-    fun getAttachedFile(post: Post): List<AttachedFileUrl> {
+    fun getAttachedFile(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<AttachedFileUrl> {
         val fnt=document.getElementsByClass("rd_fnt")
         val fileList= mutableListOf<AttachedFileUrl>()
         if(fnt.size>=1) {
@@ -75,7 +75,7 @@ class CrawlingJobHuntPost(
                         AttachedFileUrl(
                             name = file.childNodes()[0].toString(),
                             url = file.attr("href"),
-                            post = post,
+                            cbnuSoftwareJobHuntPost = cbnuSoftwareJobHuntPost,
                         )
                     )
                 }

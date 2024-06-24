@@ -16,12 +16,12 @@ class AttachedFileUrl {
     val url: String
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id", nullable = false)
-    val post: Post
+    @JoinColumn(name="cbnuSoftware_JobHunt_post_id", nullable = false)
+    val post: CbnuSoftwareJobHuntPost
 
-    constructor(name: String, url: String, post: Post) {
+    constructor(name: String, url: String, cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost) {
         this.name = name
         this.url = url
-        this.post = post
+        this.post = cbnuSoftwareJobHuntPost
     }
 }

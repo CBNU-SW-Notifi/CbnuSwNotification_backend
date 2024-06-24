@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository
 class DbPostRepository(
     private val em: EntityManager
 ) : PostRepository {
-    override fun save(post: Post): Long {
-        em.persist(post)
-        return post.id!!
+    override fun save(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): Long {
+        em.persist(cbnuSoftwareJobHuntPost)
+        return cbnuSoftwareJobHuntPost.id!!
     }
 
-    override fun findById(id: Long): Post? {
-        return em.find(Post::class.java, id)
+    override fun findById(id: Long): CbnuSoftwareJobHuntPost? {
+        return em.find(CbnuSoftwareJobHuntPost::class.java, id)
     }
 }

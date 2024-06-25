@@ -8,8 +8,8 @@ class PostContentTest {
     @Test
     fun formalTest(){
         val value = "ahgvghvasviu54165108"
-        val deviceToken = PostContent(value)
-        Assertions.assertThat(deviceToken.content).isEqualTo(value)
+        val postContent = PostContent(value)
+        Assertions.assertThat(postContent.content).isEqualTo(value)
     }
     @Test
     fun formalTest2(){
@@ -17,7 +17,7 @@ class PostContentTest {
         for (i in 0 until 20000){
             value+="가"
         }
-        val deviceToken = PostContent(value)
-        Assertions.assertThat(deviceToken.content).isEqualTo(value)
+        val postContent = PostContent(value)
+        Assertions.assertThat(postContent.content).isEqualTo(value)
     }
 }

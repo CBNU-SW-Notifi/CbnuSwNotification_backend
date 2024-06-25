@@ -1,5 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
@@ -39,7 +40,7 @@ class CrawlingJobHuntPost(
     fun getPost(): CbnuSoftwareJobHuntPost {
         return CbnuSoftwareJobHuntPost(
             title = PostTitle(document.getElementsByClass("np_18px").text()),
-            content = br2nl(document.getElementsByClass("xe_content")[0].html())?: "",
+            content = PostContent(br2nl(document.getElementsByClass("xe_content")[0].html())?: ""),
             createTime = LocalDateTime.parse(
                 document.getElementsByClass("date")[0].text(),
                 DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")

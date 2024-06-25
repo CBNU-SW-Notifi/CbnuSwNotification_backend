@@ -1,5 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
@@ -11,9 +12,8 @@ import java.time.LocalDateTime
 class CbnuSoftwareJobHuntPost(
     @Embedded
     val title: PostTitle,
-    @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
-    @Lob
-    val content: String,
+    @Embedded
+    val content: PostContent,
     val createTime: LocalDateTime,
 ) {
     @Id

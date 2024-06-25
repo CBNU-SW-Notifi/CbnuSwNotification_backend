@@ -29,7 +29,7 @@ class PostReadService(
         return PostReadResponse(
             postId = post.id!!,
             title = post.title.title,
-            content = post.content,
+            content = post.content.content,
             imageUrls = imageUrls,
             attachedFiles = files,
             createTime = post.createTime,

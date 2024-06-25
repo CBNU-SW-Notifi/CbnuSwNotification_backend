@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository.ImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.ImageUrlFixture
@@ -12,38 +12,38 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class ImageUrlRepositoryTest(
+class CbnuSoftwareJobHuntImageUrlRepositoryTest(
     @Autowired private val imageUrlRepository: ImageUrlRepository,
     @Autowired private val postRepository: PostRepository,
 ) : SpringTestSetting() {
-    lateinit var post1: Post
-    lateinit var post2: Post
+    lateinit var cbnuSoftwareJobHuntPost1: CbnuSoftwareJobHuntPost
+    lateinit var cbnuSoftwareJobHuntPost2: CbnuSoftwareJobHuntPost
 
 
     @BeforeEach
     fun before() {
-        post1 = PostFixture.createPost()
-        post2 = PostFixture.createPost()
-        postRepository.save(post1)
-        postRepository.save(post2)
+        cbnuSoftwareJobHuntPost1 = PostFixture.createPost()
+        cbnuSoftwareJobHuntPost2 = PostFixture.createPost()
+        postRepository.save(cbnuSoftwareJobHuntPost1)
+        postRepository.save(cbnuSoftwareJobHuntPost2)
     }
 
 
     @Test
     fun findAllByPost() {
-        val post1Images = mutableListOf<ImageUrl>()
-        val post2Images = mutableListOf<ImageUrl>()
+        val post1Images = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
+        val post2Images = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
         for (i in 1..5) {
-            val tmp1 = ImageUrlFixture.createUrlImage(post1)
+            val tmp1 = ImageUrlFixture.createUrlImage(cbnuSoftwareJobHuntPost1)
             imageUrlRepository.save(tmp1)
             post1Images.add(tmp1)
 
-            val tmp2 = ImageUrlFixture.createUrlImage(post2)
+            val tmp2 = ImageUrlFixture.createUrlImage(cbnuSoftwareJobHuntPost2)
             imageUrlRepository.save(tmp2)
             post2Images.add(tmp2)
         }
-        val imageUrlList1 = imageUrlRepository.findAllByPost(post1)
-        val imageUrlList2 = imageUrlRepository.findAllByPost(post2)
+        val imageUrlList1 = imageUrlRepository.findAllByPost(cbnuSoftwareJobHuntPost1)
+        val imageUrlList2 = imageUrlRepository.findAllByPost(cbnuSoftwareJobHuntPost2)
 
         Assertions.assertThat(imageUrlList1.size).isEqualTo(post1Images.size)
         Assertions.assertThat(imageUrlList1).containsAll(post1Images)

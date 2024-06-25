@@ -22,17 +22,16 @@ class PostReadService(
         }
         val files=attachedFileUrlRepository.findAllByPost(post)
             .map{ AttachedFileDto(
-                name = it.name,
+                name = it.name.name,
                 url = it.url,
             )}
 
         return PostReadResponse(
             postId = post.id!!,
-            title = post.title,
-            content = post.content,
+            title = post.title.title,
+            content = post.content.content,
             imageUrls = imageUrls,
             attachedFiles = files,
-            postType = post.postType,
             createTime = post.createTime,
             )
 

@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository.AttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.AttachedFileUrlFixture
@@ -12,38 +12,38 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class AttachedFileUrlRepositoryTest(
+class CbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val attachedFileUrlRepository: AttachedFileUrlRepository,
 ) : SpringTestSetting() {
-    lateinit var post1: Post
-    lateinit var post2: Post
+    lateinit var cbnuSoftwareJobHuntPost1: CbnuSoftwareJobHuntPost
+    lateinit var cbnuSoftwareJobHuntPost2: CbnuSoftwareJobHuntPost
 
 
     @BeforeEach
     fun before() {
-        post1 = PostFixture.createPost()
-        post2 = PostFixture.createPost()
-        postRepository.save(post1)
-        postRepository.save(post2)
+        cbnuSoftwareJobHuntPost1 = PostFixture.createPost()
+        cbnuSoftwareJobHuntPost2 = PostFixture.createPost()
+        postRepository.save(cbnuSoftwareJobHuntPost1)
+        postRepository.save(cbnuSoftwareJobHuntPost2)
     }
 
     @Test
     fun findAllAttachedFileByPost(){
-        val files1 = mutableListOf<AttachedFileUrl>()
-        val files2 = mutableListOf<AttachedFileUrl>()
+        val files1 = mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
+        val files2 = mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
 
         for(i in 1..5){
-            val tmp1 = AttachedFileUrlFixture.createAttachedFileUrl(post1)
+            val tmp1 = AttachedFileUrlFixture.createAttachedFileUrl(cbnuSoftwareJobHuntPost1)
             attachedFileUrlRepository.save(tmp1)
             files1.add(tmp1)
 
-            val tmp2 = AttachedFileUrlFixture.createAttachedFileUrl(post2)
+            val tmp2 = AttachedFileUrlFixture.createAttachedFileUrl(cbnuSoftwareJobHuntPost2)
             attachedFileUrlRepository.save(tmp2)
             files2.add(tmp2)
         }
-        val result1 = attachedFileUrlRepository.findAllByPost(post1)
-        val result2 = attachedFileUrlRepository.findAllByPost(post2)
+        val result1 = attachedFileUrlRepository.findAllByPost(cbnuSoftwareJobHuntPost1)
+        val result2 = attachedFileUrlRepository.findAllByPost(cbnuSoftwareJobHuntPost2)
 
 
         Assertions.assertThat(result1.size).isEqualTo(files1.size)

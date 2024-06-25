@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QImageUrl.imageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.QCbnuSoftwareJobHuntImageUrl.cbnuSoftwareJobHuntImageUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -13,20 +13,20 @@ class DbImageUrlRepository(
 ): ImageUrlRepository {
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
-    override fun save(imageUrl: ImageUrl): Long {
-        em.persist(imageUrl)
-        return imageUrl.id!!
+    override fun save(cbnuSoftwareJobHuntImageUrl: CbnuSoftwareJobHuntImageUrl): Long {
+        em.persist(cbnuSoftwareJobHuntImageUrl)
+        return cbnuSoftwareJobHuntImageUrl.id!!
     }
 
-    override fun findById(id: Long): ImageUrl {
-        return em.find(ImageUrl::class.java, id)
+    override fun findById(id: Long): CbnuSoftwareJobHuntImageUrl {
+        return em.find(CbnuSoftwareJobHuntImageUrl::class.java, id)
     }
 
-    override fun findAllByPost(post: Post): List<ImageUrl> {
+    override fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntImageUrl> {
         return querydsl
-            .select(imageUrl)
-            .from(imageUrl)
-            .where(imageUrl.post.eq(post))
+            .select(cbnuSoftwareJobHuntImageUrl)
+            .from(cbnuSoftwareJobHuntImageUrl)
+            .where(cbnuSoftwareJobHuntImageUrl.post.eq(cbnuSoftwareJobHuntPost))
             .fetch()
     }
 }

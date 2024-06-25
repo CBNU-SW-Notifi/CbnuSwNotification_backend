@@ -1,27 +1,24 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.domain.post
+package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
-import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
 import jakarta.persistence.*
-import lombok.Getter
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
-class Post(
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
-    val title: String,
-    @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
-    @Lob
-    val content: String,
-    @Enumerated(EnumType.STRING)
-    val postType: PostType,
+class CbnuSoftwareJobHuntPost(
+    @Embedded
+    val title: PostTitle,
+    @Embedded
+    val content: PostContent,
     val createTime: LocalDateTime,
 ) {
     @Id
     @GeneratedValue
-    @Column(name = "post_id")
+    @Column(name = "cbnu_software_job_hunt_post_id")
     val id: Long? = null
 
     @CreatedDate

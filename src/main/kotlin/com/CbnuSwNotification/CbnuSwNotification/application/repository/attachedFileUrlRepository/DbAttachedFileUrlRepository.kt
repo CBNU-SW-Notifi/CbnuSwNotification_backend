@@ -1,8 +1,8 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.QAttachedFileUrl.attachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.QCbnuSoftwareJobHuntAttachedFileUrl.cbnuSoftwareJobHuntAttachedFileUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
@@ -14,20 +14,20 @@ class DbAttachedFileUrlRepository(
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
 
-    override fun save(attachedFileUrl: AttachedFileUrl): Long {
-        em.persist(attachedFileUrl)
-        return attachedFileUrl.id!!
+    override fun save(cbnuSoftwareJobHuntAttachedFileUrl: CbnuSoftwareJobHuntAttachedFileUrl): Long {
+        em.persist(cbnuSoftwareJobHuntAttachedFileUrl)
+        return cbnuSoftwareJobHuntAttachedFileUrl.id!!
     }
 
-    override fun findById(id: Long): AttachedFileUrl {
-        return em.find(AttachedFileUrl::class.java, id)
+    override fun findById(id: Long): CbnuSoftwareJobHuntAttachedFileUrl {
+        return em.find(CbnuSoftwareJobHuntAttachedFileUrl::class.java, id)
     }
 
-    override fun findAllByPost(post: Post): List<AttachedFileUrl> {
+    override fun findAllByPost(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntAttachedFileUrl> {
         return querydsl
-            .select(attachedFileUrl)
-            .from(attachedFileUrl)
-            .where(attachedFileUrl.post.eq(post))
+            .select(cbnuSoftwareJobHuntAttachedFileUrl)
+            .from(cbnuSoftwareJobHuntAttachedFileUrl)
+            .where(cbnuSoftwareJobHuntAttachedFileUrl.post.eq(cbnuSoftwareJobHuntPost))
             .fetch()
     }
 }

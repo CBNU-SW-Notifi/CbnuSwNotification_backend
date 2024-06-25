@@ -1,13 +1,13 @@
 package com.CbnuSwNotification.CbnuSwNotification.fixture
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
 class ImageUrlFixture {
 
     companion object{
-        fun createUrlImage(post: Post):ImageUrl{
-            return ImageUrl("www.a.com", post)
+        fun createUrlImage(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): CbnuSoftwareJobHuntImageUrl {
+            return CbnuSoftwareJobHuntImageUrl("www.a.com", cbnuSoftwareJobHuntPost)
         }
     }
 }

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class PostListRepositoryTest(
+class CbnuSoftwareJobHuntPostListRepositoryTest(
     @Autowired private val postListRepository: PostListRepository,
     @Autowired private val postRepository: PostRepository,
 ) : SpringTestSetting() {

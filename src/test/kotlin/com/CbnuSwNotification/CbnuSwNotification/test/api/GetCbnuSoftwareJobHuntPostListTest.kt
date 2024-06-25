@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 
-class GetPostListTest(
+class GetCbnuSoftwareJobHuntPostListTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val mockMvc: MockMvc,
 ) : ApiTestSetting() {
@@ -36,7 +36,7 @@ class GetPostListTest(
         val size = 8L
         val response = mockMvc.perform(
             MockMvcRequestBuilders
-                .get("/api/v1/information-post/list?page=$page&size=$size")
+                .get("/api/v1/job-hunt-post/list?page=$page&size=$size")
         )
 
         response.andExpect(MockMvcResultMatchers.status().isOk)

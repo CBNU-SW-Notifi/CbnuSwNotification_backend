@@ -1,9 +1,11 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.AttachedFileUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ImageUrl
-import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.Post
-import com.CbnuSwNotification.CbnuSwNotification.common.dataType.PostType
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.AttachedFileName
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.safety.Safelist
@@ -36,27 +38,26 @@ class CrawlingJobHuntPost(
         return Jsoup.clean(s, "", Safelist.none(), Document.OutputSettings().prettyPrint(false))
     }
 
-    fun getPost(): Post {
-        return Post(
-            title = document.getElementsByClass("np_18px").text(),
-            content = br2nl(document.getElementsByClass("xe_content")[0].html())?: "",
+    fun getPost(): CbnuSoftwareJobHuntPost {
+        return CbnuSoftwareJobHuntPost(
+            title = PostTitle(document.getElementsByClass("np_18px").text()),
+            content = PostContent(br2nl(document.getElementsByClass("xe_content")[0].html())?: ""),
             createTime = LocalDateTime.parse(
                 document.getElementsByClass("date")[0].text(),
                 DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")
             ),
-            postType = PostType.COMMON,
         )
     }
 
-    fun getImage(post: Post): List<ImageUrl> {
+    fun getImage(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntImageUrl> {
         val images = document.getElementsByClass("xe_content")[0].getElementsByTag("img")
-        val imageList = mutableListOf<ImageUrl>()
+        val imageList = mutableListOf<CbnuSoftwareJobHuntImageUrl>()
         for (image in images) {
             if(image.attr("src").length<=1000) {
                 imageList.add(
-                    ImageUrl(
+                    CbnuSoftwareJobHuntImageUrl(
                         url = image.attr("src"),
-                        post = post,
+                        post = cbnuSoftwareJobHuntPost,
                     )
                 )
             }
@@ -64,18 +65,18 @@ class CrawlingJobHuntPost(
         return imageList
     }
 
-    fun getAttachedFile(post: Post): List<AttachedFileUrl> {
+    fun getAttachedFile(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): List<CbnuSoftwareJobHuntAttachedFileUrl> {
         val fnt=document.getElementsByClass("rd_fnt")
-        val fileList= mutableListOf<AttachedFileUrl>()
+        val fileList= mutableListOf<CbnuSoftwareJobHuntAttachedFileUrl>()
         if(fnt.size>=1) {
             val files = fnt[0].getElementsByClass("bubble")
             for (file in files) {
                 if(file.attr("href").length<=1000) {
                     fileList.add(
-                        AttachedFileUrl(
-                            name = file.childNodes()[0].toString(),
+                        CbnuSoftwareJobHuntAttachedFileUrl(
+                            name = AttachedFileName(file.childNodes()[0].toString()),
                             url = file.attr("href"),
-                            post = post,
+                            post = cbnuSoftwareJobHuntPost,
                         )
                     )
                 }

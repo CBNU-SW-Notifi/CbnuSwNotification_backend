@@ -36,7 +36,7 @@ class GetCbnuSoftwareJobHuntPostListTest(
         val size = 8L
         val response = mockMvc.perform(
             MockMvcRequestBuilders
-                .get("/api/v1/information-post/list?page=$page&size=$size")
+                .get("/api/v1/job-hunt-post/list?page=$page&size=$size")
         )
 
         response.andExpect(MockMvcResultMatchers.status().isOk)

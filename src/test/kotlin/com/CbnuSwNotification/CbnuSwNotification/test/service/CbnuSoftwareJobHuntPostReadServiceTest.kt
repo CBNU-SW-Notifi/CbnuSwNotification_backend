@@ -41,7 +41,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
             attachedFileUrlRepository.save(tmp)
             files.add(
                 AttachedFileDto(
-                    name = tmp.name,
+                    name = tmp.name.name,
                     url = tmp.url,
                 )
             )

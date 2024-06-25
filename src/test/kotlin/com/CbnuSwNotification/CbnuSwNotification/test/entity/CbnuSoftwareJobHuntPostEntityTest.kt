@@ -39,7 +39,7 @@ class CbnuSoftwareJobHuntPostEntityTest(
         Assertions.assertThat(findPost.id).isNotNull()
         Assertions.assertThat(findPost.saveTime).isNotNull()
         Assertions.assertThat(findPost.saveTime).isBefore(LocalDateTime.now())
-        Assertions.assertThat(findPost.content).isEqualTo(str)
+        Assertions.assertThat(findPost.content.content).isEqualTo(str)
     }
 
 }

@@ -22,7 +22,7 @@ class PostReadService(
         }
         val files=attachedFileUrlRepository.findAllByPost(post)
             .map{ AttachedFileDto(
-                name = it.name,
+                name = it.name.name,
                 url = it.url,
             )}
 

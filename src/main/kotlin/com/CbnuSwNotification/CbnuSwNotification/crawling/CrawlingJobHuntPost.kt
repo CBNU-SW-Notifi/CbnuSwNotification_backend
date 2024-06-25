@@ -1,5 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.AttachedFileName
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
@@ -73,7 +74,7 @@ class CrawlingJobHuntPost(
                 if(file.attr("href").length<=1000) {
                     fileList.add(
                         CbnuSoftwareJobHuntAttachedFileUrl(
-                            name = file.childNodes()[0].toString(),
+                            name = AttachedFileName(file.childNodes()[0].toString()),
                             url = file.attr("href"),
                             post = cbnuSoftwareJobHuntPost,
                         )

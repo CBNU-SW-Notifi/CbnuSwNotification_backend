@@ -19,7 +19,7 @@ class PostContent(
 
     private fun checkValid(value: String) {
         if (value.length > 20000) {
-            throw IllegalArgumentException("타이틀의 값이 정상적이지 않습니다")
+            throw IllegalArgumentException("본문의 값이 정상적이지 않습니다")
         }
     }
 }

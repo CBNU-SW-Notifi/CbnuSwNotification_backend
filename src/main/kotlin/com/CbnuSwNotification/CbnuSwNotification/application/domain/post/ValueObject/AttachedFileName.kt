@@ -18,7 +18,7 @@ class AttachedFileName(
 
     private fun checkValid(value: String) {
         if (value.isBlank() || value.length > 50) {
-            throw IllegalArgumentException("타이틀의 값이 정상적이지 않습니다")
+            throw IllegalArgumentException("첨부파일 명이 정상적이지 않습니다")
         }
     }
 }

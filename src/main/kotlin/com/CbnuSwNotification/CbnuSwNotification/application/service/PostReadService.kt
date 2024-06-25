@@ -28,7 +28,7 @@ class PostReadService(
 
         return PostReadResponse(
             postId = post.id!!,
-            title = post.title,
+            title = post.title.title,
             content = post.content,
             imageUrls = imageUrls,
             attachedFiles = files,

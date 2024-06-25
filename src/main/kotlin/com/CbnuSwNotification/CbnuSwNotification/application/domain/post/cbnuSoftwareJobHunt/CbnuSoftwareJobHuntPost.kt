@@ -1,5 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt
 
+import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostTitle
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -8,8 +9,8 @@ import java.time.LocalDateTime
 @Entity
 @EntityListeners(AuditingEntityListener::class)
 class CbnuSoftwareJobHuntPost(
-    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
-    val title: String,
+    @Embedded
+    val title: PostTitle,
     @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
     @Lob
     val content: String,

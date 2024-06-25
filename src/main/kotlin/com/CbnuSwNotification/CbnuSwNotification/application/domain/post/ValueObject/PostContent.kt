@@ -11,7 +11,6 @@ import lombok.ToString
 @EqualsAndHashCode
 class PostContent(
     @Column(columnDefinition = "VARCHAR(20000) CHARACTER SET UTF8")
-    @Lob
     val content: String,
 ) {
     init {

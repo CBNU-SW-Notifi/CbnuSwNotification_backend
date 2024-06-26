@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.test.service
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.AttachedFileUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.ImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.service.PostReadService
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired
 class CbnuSoftwareJobHuntPostReadServiceTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val imageUrlRepository: ImageUrlRepository,
-    @Autowired private val attachedFileUrlRepository: AttachedFileUrlRepository,
+    @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
     @Autowired private val postReadService: PostReadService,
 ) : SpringTestSetting() {
 
@@ -38,7 +38,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
 
         for (i in 1..3) {
             val tmp = AttachedFileUrlFixture.createAttachedFileUrl(cbnuSoftwareJobHuntPost)
-            attachedFileUrlRepository.save(tmp)
+            cbnuSoftwareJobHuntAttachedFileUrlRepository.save(tmp)
             files.add(
                 AttachedFileDto(
                     name = tmp.name.name,

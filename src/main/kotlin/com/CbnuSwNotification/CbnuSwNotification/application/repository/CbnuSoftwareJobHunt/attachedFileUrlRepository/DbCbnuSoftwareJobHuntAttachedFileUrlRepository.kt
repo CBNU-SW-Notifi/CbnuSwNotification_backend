@@ -8,9 +8,9 @@ import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
 @Repository
-class DbAttachedFileUrlRepository(
+class DbCbnuSoftwareJobHuntAttachedFileUrlRepository(
     private val em: EntityManager,
-) : AttachedFileUrlRepository {
+) : CbnuSoftwareJobHuntAttachedFileUrlRepository {
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
 

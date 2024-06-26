@@ -1,20 +1,17 @@
 package com.CbnuSwNotification.CbnuSwNotification.crawling
 
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.AttachedFileUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.ImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CrawlingLastIndex
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository.CrawlingLastIndexRepository
 import com.CbnuSwNotification.CbnuSwNotification.notification.service.NotificationService
-import jakarta.annotation.PostConstruct
 import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.annotation.Profile
 import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.scheduling.annotation.Schedules
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -24,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional
 class CrawlingAllJobHunt(
     private val postRepository: PostRepository,
     private val imageUrlRepository: ImageUrlRepository,
-    private val attachedFileUrlRepository: AttachedFileUrlRepository,
+    private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
     private val crawlingLastIndexRepository: CrawlingLastIndexRepository,
     private val notificationService: NotificationService,
 ) {
@@ -61,7 +58,7 @@ class CrawlingAllJobHunt(
 
             val files = crawlingJobHuntPost.getAttachedFile(post)
             for(file in files){
-                attachedFileUrlRepository.save(file)
+                cbnuSoftwareJobHuntAttachedFileUrlRepository.save(file)
             }
             cnt++
         }

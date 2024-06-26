@@ -3,7 +3,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSof
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
-interface AttachedFileUrlRepository {
+interface CbnuSoftwareJobHuntAttachedFileUrlRepository {
 
     /**
      * @param cbnuSoftwareJobHuntAttachedFileUrl 첨부파일 url 객체

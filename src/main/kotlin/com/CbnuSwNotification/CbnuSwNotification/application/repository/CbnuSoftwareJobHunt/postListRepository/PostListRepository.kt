@@ -1,6 +1,6 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository
+package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository
 
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto.PostListDto
 
 interface PostListRepository {
 

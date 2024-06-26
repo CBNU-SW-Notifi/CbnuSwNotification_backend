@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository
+package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import jakarta.persistence.EntityManager

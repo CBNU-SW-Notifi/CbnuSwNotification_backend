@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.api
 
 import com.CbnuSwNotification.CbnuSwNotification.ApiTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.assertj.core.api.Assertions

@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.service
 
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.PostListRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.PostListRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto.PostListDto
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PaginationResultResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PostMetadataResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.common.Pagination

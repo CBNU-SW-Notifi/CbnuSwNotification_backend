@@ -1,7 +1,7 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository
+package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.QCbnuSoftwareJobHuntPost.cbnuSoftwareJobHuntPost
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postListRepository.dto.PostListDto
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto.PostListDto
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
@@ -10,14 +10,15 @@ import org.springframework.stereotype.Repository
 @Repository
 class DbPostListRepository(
     private val em: EntityManager
-) : PostListRepository{
+) : PostListRepository {
 
     private val querydsl:JPAQueryFactory = JPAQueryFactory(em)
 
     override fun getPostList(page: Long, size: Long): List<PostListDto> {
         //TODO:쿼리 최적화 필요
         return querydsl
-            .select(Projections.constructor(PostListDto::class.java,
+            .select(Projections.constructor(
+                PostListDto::class.java,
                 cbnuSoftwareJobHuntPost.id,
                 cbnuSoftwareJobHuntPost.title.title,
                 cbnuSoftwareJobHuntPost.createTime

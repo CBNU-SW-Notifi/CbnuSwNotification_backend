@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class PostListService(
+class CbnuSoftwareJobHuntPostListService(
     private val cbnuSoftwareJobHuntPostListRepository: CbnuSoftwareJobHuntPostListRepository,
 ) {
     fun getPostList(page: Long, size: Long): PaginationResultResponse<PostMetadataResponse> {

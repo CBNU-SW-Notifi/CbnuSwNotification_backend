@@ -5,7 +5,7 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSof
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.service.PostReadService
+import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHuntPostReadService
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.AttachedFileDto
 import com.CbnuSwNotification.CbnuSwNotification.fixture.AttachedFileUrlFixture
 import com.CbnuSwNotification.CbnuSwNotification.fixture.ImageUrlFixture
@@ -19,7 +19,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
     @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
     @Autowired private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
     @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
-    @Autowired private val postReadService: PostReadService,
+    @Autowired private val cbnuSoftwareJobHuntPostReadService: CbnuSoftwareJobHuntPostReadService,
 ) : SpringTestSetting() {
 
     private lateinit var cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost
@@ -50,7 +50,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
 
     @Test
     fun postReadTest() {
-        val result = postReadService.readPost(cbnuSoftwareJobHuntPost.id!!) ?: throw Exception()
+        val result = cbnuSoftwareJobHuntPostReadService.readPost(cbnuSoftwareJobHuntPost.id!!) ?: throw Exception()
 
         Assertions.assertThat(result.attachedFiles.size).isEqualTo(files.size)
         Assertions.assertThat(result.imageUrls.size).isEqualTo(images.size)

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class PostReadService(
+class CbnuSoftwareJobHuntPostReadService(
     private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
     private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
     private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,

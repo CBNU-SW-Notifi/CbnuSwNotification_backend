@@ -3,7 +3,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSof
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
-interface ImageUrlRepository {
+interface CbnuSoftwareJobHuntImageUrlRepository {
 
     /**
      * @param cbnuSoftwareJobHuntImageUrl 이미지 url 객체

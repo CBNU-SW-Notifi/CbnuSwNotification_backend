@@ -8,9 +8,9 @@ import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
 @Repository
-class DbImageUrlRepository(
+class DbCbnuSoftwareJobHuntImageUrlRepository(
     private val em: EntityManager
-): ImageUrlRepository {
+): CbnuSoftwareJobHuntImageUrlRepository {
 
     private val querydsl: JPAQueryFactory = JPAQueryFactory(em)
     override fun save(cbnuSoftwareJobHuntImageUrl: CbnuSoftwareJobHuntImageUrl): Long {

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
-class CbnuSoftwareJobHuntCbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
+class CbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
     @Autowired private val postRepository: PostRepository,
     @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
 ) : SpringTestSetting() {

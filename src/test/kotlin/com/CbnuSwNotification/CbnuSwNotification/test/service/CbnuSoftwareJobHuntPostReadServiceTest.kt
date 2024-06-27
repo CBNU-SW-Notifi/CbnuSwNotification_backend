@@ -3,7 +3,7 @@ package com.CbnuSwNotification.CbnuSwNotification.test.service
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.ImageUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.service.PostReadService
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.AttachedFileDto
@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 class CbnuSoftwareJobHuntPostReadServiceTest(
     @Autowired private val postRepository: PostRepository,
-    @Autowired private val imageUrlRepository: ImageUrlRepository,
+    @Autowired private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
     @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
     @Autowired private val postReadService: PostReadService,
 ) : SpringTestSetting() {
@@ -32,7 +32,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
         postRepository.save(cbnuSoftwareJobHuntPost)
         for (i in 1..3) {
             val tmp = ImageUrlFixture.createUrlImage(cbnuSoftwareJobHuntPost)
-            imageUrlRepository.save(tmp)
+            cbnuSoftwareJobHuntImageUrlRepository.save(tmp)
             images.add(tmp.url)
         }
 

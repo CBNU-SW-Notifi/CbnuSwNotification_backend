@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.service
 
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.ImageUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.AttachedFileDto
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.postReadDto.PostReadResponse
@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class PostReadService(
     private val postRepository: PostRepository,
-    private val imageUrlRepository: ImageUrlRepository,
+    private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
     private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
 ) {
     fun readPost(postId: Long): PostReadResponse? {
         val post = postRepository.findById(postId) ?: return null
-        val imageUrls=imageUrlRepository.findAllByPost(post).map {
+        val imageUrls=cbnuSoftwareJobHuntImageUrlRepository.findAllByPost(post).map {
             it.url
         }
         val files=cbnuSoftwareJobHuntAttachedFileUrlRepository.findAllByPost(post)

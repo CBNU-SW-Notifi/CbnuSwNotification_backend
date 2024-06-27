@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto
+package com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto
 
 import java.time.LocalDateTime
 

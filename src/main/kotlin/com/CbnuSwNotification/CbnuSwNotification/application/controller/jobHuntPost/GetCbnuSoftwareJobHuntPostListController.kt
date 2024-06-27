@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*
 @Tag(name = "job hunt Post API", description = "job hunt Post  API 목록")
 @RestController
 @RequestMapping("/api/v1/job-hunt-post")
-class GetPostListController(
+class GetCbnuSoftwareJobHuntPostListController(
     private val cbnuSoftwareJobHuntPostListService: CbnuSoftwareJobHuntPostListService,
 ) {
 
-    private val log = LoggerFactory.getLogger(GetPostListController::class.java)
+    private val log = LoggerFactory.getLogger(GetCbnuSoftwareJobHuntPostListController::class.java)
 
     @Operation(summary = "취업 정보 게시글 리스트 조회", description = "취업 정보 게시글의 리스트 조회를 조회합니다")
     @GetMapping("/list")

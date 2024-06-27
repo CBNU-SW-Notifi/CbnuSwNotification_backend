@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSof
 
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto.PostListDto
 
-interface PostListRepository {
+interface CbnuSoftwareJobHuntPostListRepository {
 
     /**
      * @param page: 몇 번째 페이지 인지

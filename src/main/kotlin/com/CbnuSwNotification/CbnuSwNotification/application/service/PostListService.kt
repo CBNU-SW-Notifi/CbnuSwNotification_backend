@@ -1,7 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.service
 
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.PostListRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.dto.PostListDto
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.CbnuSoftwareJobHuntPostListRepository
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PaginationResultResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PostMetadataResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.common.Pagination
@@ -11,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class PostListService(
-    private val postListRepository: PostListRepository,
+    private val cbnuSoftwareJobHuntPostListRepository: CbnuSoftwareJobHuntPostListRepository,
 ) {
     fun getPostList(page: Long, size: Long): PaginationResultResponse<PostMetadataResponse> {
-        val postList = postListRepository.getPostList(page, size).map {
+        val postList = cbnuSoftwareJobHuntPostListRepository.getPostList(page, size).map {
             postListDto ->
             PostMetadataResponse(
                 postId = postListDto.id,
@@ -22,7 +21,7 @@ class PostListService(
                 createTime = postListDto.createTime,
             )
         }
-        val totalElement = postListRepository.getAllPostAmount()
+        val totalElement = cbnuSoftwareJobHuntPostListRepository.getAllPostAmount()
 
         return PaginationResultResponse(
             data = postList,

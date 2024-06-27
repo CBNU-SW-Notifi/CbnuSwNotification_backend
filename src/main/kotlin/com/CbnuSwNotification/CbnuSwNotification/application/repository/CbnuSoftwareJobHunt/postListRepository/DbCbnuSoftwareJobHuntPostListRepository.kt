@@ -8,9 +8,9 @@ import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
 @Repository
-class DbPostListRepository(
+class DbCbnuSoftwareJobHuntPostListRepository(
     private val em: EntityManager
-) : PostListRepository {
+) : CbnuSoftwareJobHuntPostListRepository {
 
     private val querydsl:JPAQueryFactory = JPAQueryFactory(em)
 

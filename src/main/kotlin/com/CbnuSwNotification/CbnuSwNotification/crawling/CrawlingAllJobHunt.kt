@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.crawling
 
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.domain.CrawlingLastIndex
 import com.CbnuSwNotification.CbnuSwNotification.crawling.lastIndex.repository.CrawlingLastIndexRepository
 import com.CbnuSwNotification.CbnuSwNotification.notification.service.NotificationService
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class CrawlingAllJobHunt(
-    private val postRepository: PostRepository,
+    private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
     private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
     private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
     private val crawlingLastIndexRepository: CrawlingLastIndexRepository,
@@ -49,7 +49,7 @@ class CrawlingAllJobHunt(
             val crawlingJobHuntPost = CrawlingJobHuntPost(url)
 
             val post = crawlingJobHuntPost.getPost()
-            postRepository.save(post)
+            cbnuSoftwareJobHuntPostRepository.save(post)
 
             val images = crawlingJobHuntPost.getImage(post)
             for (image in images){

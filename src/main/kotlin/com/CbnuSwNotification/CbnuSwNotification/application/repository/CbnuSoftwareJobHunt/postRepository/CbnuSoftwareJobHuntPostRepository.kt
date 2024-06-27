@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSof
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 
-interface PostRepository {
+interface CbnuSoftwareJobHuntPostRepository {
 
     fun save(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost) :Long
 

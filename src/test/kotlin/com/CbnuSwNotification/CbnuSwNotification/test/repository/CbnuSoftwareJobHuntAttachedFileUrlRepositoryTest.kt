@@ -4,7 +4,7 @@ import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.AttachedFileUrlFixture
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
 class CbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
-    @Autowired private val postRepository: PostRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
     @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
 ) : SpringTestSetting() {
     lateinit var cbnuSoftwareJobHuntPost1: CbnuSoftwareJobHuntPost
@@ -24,8 +24,8 @@ class CbnuSoftwareJobHuntAttachedFileUrlRepositoryTest(
     fun before() {
         cbnuSoftwareJobHuntPost1 = PostFixture.createPost()
         cbnuSoftwareJobHuntPost2 = PostFixture.createPost()
-        postRepository.save(cbnuSoftwareJobHuntPost1)
-        postRepository.save(cbnuSoftwareJobHuntPost2)
+        cbnuSoftwareJobHuntPostRepository.save(cbnuSoftwareJobHuntPost1)
+        cbnuSoftwareJobHuntPostRepository.save(cbnuSoftwareJobHuntPost2)
     }
 
     @Test

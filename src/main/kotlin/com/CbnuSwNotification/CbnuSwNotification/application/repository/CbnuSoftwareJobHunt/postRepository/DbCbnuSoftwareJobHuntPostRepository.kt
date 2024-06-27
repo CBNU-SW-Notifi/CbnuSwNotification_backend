@@ -5,9 +5,9 @@ import jakarta.persistence.EntityManager
 import org.springframework.stereotype.Repository
 
 @Repository
-class DbPostRepository(
+class DbCbnuSoftwareJobHuntPostRepository(
     private val em: EntityManager
-) : PostRepository {
+) : CbnuSoftwareJobHuntPostRepository {
     override fun save(cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost): Long {
         em.persist(cbnuSoftwareJobHuntPost)
         return cbnuSoftwareJobHuntPost.id!!

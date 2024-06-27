@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.test.repository
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.CbnuSoftwareJobHuntPostListRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 class CbnuSoftwareJobHuntPostListRepositoryTest(
     @Autowired private val cbnuSoftwareJobHuntPostListRepository: CbnuSoftwareJobHuntPostListRepository,
-    @Autowired private val postRepository: PostRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
 ) : SpringTestSetting() {
 
     val postList = mutableListOf<Long>()
@@ -19,7 +19,7 @@ class CbnuSoftwareJobHuntPostListRepositoryTest(
     @BeforeEach
     fun before(){
         for(i in 1..10){
-            postList.add(postRepository.save(PostFixture.createPost()))
+            postList.add(cbnuSoftwareJobHuntPostRepository.save(PostFixture.createPost()))
             Thread.sleep(100)
         }
         postList.reverse()

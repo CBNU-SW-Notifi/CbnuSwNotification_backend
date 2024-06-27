@@ -4,7 +4,7 @@ import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.ImageUrlFixture
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 class CbnuSoftwareJobHuntImageUrlRepositoryTest(
     @Autowired private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
-    @Autowired private val postRepository: PostRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
 ) : SpringTestSetting() {
     lateinit var cbnuSoftwareJobHuntPost1: CbnuSoftwareJobHuntPost
     lateinit var cbnuSoftwareJobHuntPost2: CbnuSoftwareJobHuntPost
@@ -24,8 +24,8 @@ class CbnuSoftwareJobHuntImageUrlRepositoryTest(
     fun before() {
         cbnuSoftwareJobHuntPost1 = PostFixture.createPost()
         cbnuSoftwareJobHuntPost2 = PostFixture.createPost()
-        postRepository.save(cbnuSoftwareJobHuntPost1)
-        postRepository.save(cbnuSoftwareJobHuntPost2)
+        cbnuSoftwareJobHuntPostRepository.save(cbnuSoftwareJobHuntPost1)
+        cbnuSoftwareJobHuntPostRepository.save(cbnuSoftwareJobHuntPost2)
     }
 
 

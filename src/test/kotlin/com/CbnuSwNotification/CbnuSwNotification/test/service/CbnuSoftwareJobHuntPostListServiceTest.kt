@@ -1,7 +1,7 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.service
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.service.PostListService
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions
@@ -12,14 +12,14 @@ import kotlin.math.min
 
 class CbnuSoftwareJobHuntPostListServiceTest(
     @Autowired private val postListService: PostListService,
-    @Autowired private val postRepository: PostRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
 ) : SpringTestSetting() {
 
     val postList = mutableListOf<Long>()
     @BeforeEach
     fun before() {
         for (i in 1..10) {
-            postList.add(postRepository.save(PostFixture.createPost()))
+            postList.add(cbnuSoftwareJobHuntPostRepository.save(PostFixture.createPost()))
             Thread.sleep(100)
         }
         postList.reverse()

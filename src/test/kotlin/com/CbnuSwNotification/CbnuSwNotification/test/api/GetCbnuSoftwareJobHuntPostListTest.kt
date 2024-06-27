@@ -1,10 +1,9 @@
 package com.CbnuSwNotification.CbnuSwNotification.test.api
 
 import com.CbnuSwNotification.CbnuSwNotification.ApiTestSetting
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.PostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,7 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 
 class GetCbnuSoftwareJobHuntPostListTest(
-    @Autowired private val postRepository: PostRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
     @Autowired private val mockMvc: MockMvc,
 ) : ApiTestSetting() {
 
@@ -24,7 +23,7 @@ class GetCbnuSoftwareJobHuntPostListTest(
     @BeforeEach
     fun before() {
         for (i in 1..10) {
-            postList.add(postRepository.save(PostFixture.createPost()))
+            postList.add(cbnuSoftwareJobHuntPostRepository.save(PostFixture.createPost()))
             Thread.sleep(10)
         }
         postList.reverse()

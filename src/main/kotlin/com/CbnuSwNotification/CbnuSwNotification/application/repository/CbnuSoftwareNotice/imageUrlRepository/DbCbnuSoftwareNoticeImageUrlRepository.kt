@@ -6,7 +6,9 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSof
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwarenotice.QCbnuSoftwareNoticeImageUrl.cbnuSoftwareNoticeImageUrl
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
+import org.springframework.stereotype.Repository
 
+@Repository
 class DbCbnuSoftwareNoticeImageUrlRepository(
     private val em: EntityManager
 ): CbnuSoftwareNoticeImageUrlRepository {

@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.application.service
+package com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHunt
 
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postListRepository.CbnuSoftwareJobHuntPostListRepository
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PaginationResultResponse

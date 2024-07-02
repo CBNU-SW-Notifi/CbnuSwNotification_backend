@@ -2,7 +2,7 @@ package com.CbnuSwNotification.CbnuSwNotification.test.service
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHuntPostListService
+import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHunt.CbnuSoftwareJobHuntPostListService
 import com.CbnuSwNotification.CbnuSwNotification.fixture.PostFixture
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach

@@ -1,6 +1,6 @@
 package com.CbnuSwNotification.CbnuSwNotification.application.controller.jobHuntPost
 
-import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHuntPostListService
+import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHunt.CbnuSoftwareJobHuntPostListService
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PaginationResultResponse
 import com.CbnuSwNotification.CbnuSwNotification.common.dto.PostListDto.PostMetadataResponse
 import io.swagger.v3.oas.annotations.Operation

@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.crawling
+package com.CbnuSwNotification.CbnuSwNotification.crawling.cbnu.software.jobHunt
 
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
 import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository

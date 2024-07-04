@@ -1,4 +1,4 @@
-package com.CbnuSwNotification.CbnuSwNotification.crawling
+package com.CbnuSwNotification.CbnuSwNotification.crawling.cbnu.software.jobHunt
 
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.AttachedFileName
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueObject.PostContent
@@ -9,7 +9,6 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSof
 import com.CbnuSwNotification.CbnuSwNotification.crawling.util.Util
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.jsoup.safety.Safelist
 import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

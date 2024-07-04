@@ -6,6 +6,7 @@ import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.ValueOb
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntAttachedFileUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntImageUrl
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
+import com.CbnuSwNotification.CbnuSwNotification.crawling.util.Util
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.safety.Safelist
@@ -26,22 +27,10 @@ class CrawlingJobHuntPost(
         this.document = conn.get()
     }
 
-    private fun br2nl(html: String?): String? {
-        if (html == null) return html
-        val document: Document = Jsoup.parse(html)
-        document.outputSettings(Document.OutputSettings().prettyPrint(false)) //makes html() preserve linebreaks and spacing
-        document.select("br").append("\n")
-        document.select("p").prepend("\n")
-        val s: String = document.html().replace("\\n", "\n").replace("&nbsp;"," ")
-            .replace("&lt;", "<").replace("&gt;", ">")
-            .replace("&amp;", "&").replace("&quot;", "\"")
-        return Jsoup.clean(s, "", Safelist.none(), Document.OutputSettings().prettyPrint(false))
-    }
-
     fun getPost(): CbnuSoftwareJobHuntPost {
         return CbnuSoftwareJobHuntPost(
             title = PostTitle(document.getElementsByClass("np_18px").text()),
-            content = PostContent(br2nl(document.getElementsByClass("xe_content")[0].html())?: ""),
+            content = PostContent(Util.br2nl(document.getElementsByClass("xe_content")[0].html())?: ""),
             createTime = LocalDateTime.parse(
                 document.getElementsByClass("date")[0].text(),
                 DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm")

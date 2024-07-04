@@ -2,10 +2,10 @@ package com.CbnuSwNotification.CbnuSwNotification.test.service
 
 import com.CbnuSwNotification.CbnuSwNotification.SpringTestSetting
 import com.CbnuSwNotification.CbnuSwNotification.application.domain.post.cbnuSoftwareJobHunt.CbnuSoftwareJobHuntPost
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.attachedFileUrlRepository.AttachedFileUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.imageUrlRepository.ImageUrlRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.repository.postRepository.PostRepository
-import com.CbnuSwNotification.CbnuSwNotification.application.service.PostReadService
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.attachedFileUrlRepository.CbnuSoftwareJobHuntAttachedFileUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.imageUrlRepository.CbnuSoftwareJobHuntImageUrlRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.repository.CbnuSoftwareJobHunt.postRepository.CbnuSoftwareJobHuntPostRepository
+import com.CbnuSwNotification.CbnuSwNotification.application.service.CbnuSoftwareJobHunt.CbnuSoftwareJobHuntPostReadService
 import com.CbnuSwNotification.CbnuSwNotification.common.dataType.AttachedFileDto
 import com.CbnuSwNotification.CbnuSwNotification.fixture.AttachedFileUrlFixture
 import com.CbnuSwNotification.CbnuSwNotification.fixture.ImageUrlFixture
@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
 class CbnuSoftwareJobHuntPostReadServiceTest(
-    @Autowired private val postRepository: PostRepository,
-    @Autowired private val imageUrlRepository: ImageUrlRepository,
-    @Autowired private val attachedFileUrlRepository: AttachedFileUrlRepository,
-    @Autowired private val postReadService: PostReadService,
+    @Autowired private val cbnuSoftwareJobHuntPostRepository: CbnuSoftwareJobHuntPostRepository,
+    @Autowired private val cbnuSoftwareJobHuntImageUrlRepository: CbnuSoftwareJobHuntImageUrlRepository,
+    @Autowired private val cbnuSoftwareJobHuntAttachedFileUrlRepository: CbnuSoftwareJobHuntAttachedFileUrlRepository,
+    @Autowired private val cbnuSoftwareJobHuntPostReadService: CbnuSoftwareJobHuntPostReadService,
 ) : SpringTestSetting() {
 
     private lateinit var cbnuSoftwareJobHuntPost: CbnuSoftwareJobHuntPost
@@ -29,16 +29,16 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
     @BeforeEach
     fun before() {
         cbnuSoftwareJobHuntPost = PostFixture.createPost()
-        postRepository.save(cbnuSoftwareJobHuntPost)
+        cbnuSoftwareJobHuntPostRepository.save(cbnuSoftwareJobHuntPost)
         for (i in 1..3) {
             val tmp = ImageUrlFixture.createUrlImage(cbnuSoftwareJobHuntPost)
-            imageUrlRepository.save(tmp)
+            cbnuSoftwareJobHuntImageUrlRepository.save(tmp)
             images.add(tmp.url)
         }
 
         for (i in 1..3) {
             val tmp = AttachedFileUrlFixture.createAttachedFileUrl(cbnuSoftwareJobHuntPost)
-            attachedFileUrlRepository.save(tmp)
+            cbnuSoftwareJobHuntAttachedFileUrlRepository.save(tmp)
             files.add(
                 AttachedFileDto(
                     name = tmp.name.name,
@@ -50,7 +50,7 @@ class CbnuSoftwareJobHuntPostReadServiceTest(
 
     @Test
     fun postReadTest() {
-        val result = postReadService.readPost(cbnuSoftwareJobHuntPost.id!!) ?: throw Exception()
+        val result = cbnuSoftwareJobHuntPostReadService.readPost(cbnuSoftwareJobHuntPost.id!!) ?: throw Exception()
 
         Assertions.assertThat(result.attachedFiles.size).isEqualTo(files.size)
         Assertions.assertThat(result.imageUrls.size).isEqualTo(images.size)

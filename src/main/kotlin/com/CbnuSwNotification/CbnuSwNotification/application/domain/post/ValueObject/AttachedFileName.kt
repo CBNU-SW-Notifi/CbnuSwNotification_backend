@@ -9,7 +9,7 @@ import lombok.ToString
 @ToString
 @EqualsAndHashCode
 class AttachedFileName(
-    @Column(columnDefinition = "VARCHAR(50) CHARACTER SET UTF8")
+    @Column(columnDefinition = "VARCHAR(255) CHARACTER SET UTF8")
     val name: String,
 ) {
     init {
@@ -17,8 +17,8 @@ class AttachedFileName(
     }
 
     private fun checkValid(value: String) {
-        if (value.isBlank() || value.length > 50) {
-            throw IllegalArgumentException("첨부파일 명이 정상적이지 않습니다")
+        if (value.isBlank() || value.length > 255) {
+            throw IllegalArgumentException("첨부파일 명 '${value}'이 정상적이지 않습니다")
         }
     }
 }

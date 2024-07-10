@@ -52,6 +52,7 @@ dependencies {
 
 	//크롤링
 	implementation("org.jsoup:jsoup:1.17.2")
+	implementation("org.apache.commons:commons-text:1.12.0")
 
 	//api doc
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
